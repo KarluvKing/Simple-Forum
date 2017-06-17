@@ -20,7 +20,7 @@ Server preparation for correct code execution - Packages needed to install on Ub
 - pip2 install sqlalchemy flask-sqlalchemy psycopg2 bleach
 
 Create the Database 'forum' in PSQL:
-1) - sudo -u postgres createdb forum
+1) sudo -u postgres createdb forum
 2) psql -d forum
 3) CREATE TABLE posts ( content TEXT, time TIMESTAMP DEFAULT CURRENT_TIMESTAMP, id SERIAL );
 4) \q
