@@ -16,8 +16,8 @@ def add_post(content):
 	"""Add a post to the 'database' with the current timestamp."""
 	db = psycopg2.connect(database=DBNAME)
 	c = db.cursor()
-	#c.execute("insert into posts values ('%s')" % content)
-	#c.execute("insert into posts values (%s)", (content,))  # Better, but ...
-	c.execute("insert into posts values (%s)", (bleach.clean(content),))  # good
+	#c.execute("insert into posts values ('%s')" % content) # Insecure (sql injection and so on...)
+	#c.execute("insert into posts values (%s)", (content,))  # Better, but (script files can be execute)
+	c.execute("insert into posts values (%s)", (bleach.clean(content),))  # good (secure!!!!)
 	db.commit()
 	db.close()
